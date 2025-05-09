@@ -14,7 +14,7 @@ def main():
     cursor = connection.cursor()
 
     # filtragem dos dados e população do banco de dados
-    embrapa_dataset = pd.read_csv("./cidadesPreserv.csv")
+    embrapa_dataset = pd.read_csv("./dataset/cidadesPreserv.csv")
 
     regiao = embrapa_dataset['nm_regiao'].drop_duplicates()
     regiao = list(zip([5, 3, 2, 4, 1], list(map(lambda x: x.upper(), regiao))))
@@ -108,7 +108,7 @@ def main():
                        "VALUES (%s, %s, %s, %s)", area_exploravel)
    
 
-    seeg_entidades_dataset = pd.read_csv("./gasesEE-entidades.csv", keep_default_na=False)
+    seeg_entidades_dataset = pd.read_csv("./dataset/gasesEE-entidades.csv", keep_default_na=False)
 
     origem = seeg_entidades_dataset[['Emissão/Remoção/Bunker', 'Setor de emissão',  'Categoria emissora', 'Sub-categoria emissora']].drop_duplicates()  
     origem = list(zip(range(113), origem['Emissão/Remoção/Bunker'], origem['Setor de emissão'], origem['Categoria emissora'], origem['Sub-categoria emissora']))
@@ -143,7 +143,7 @@ def main():
                        "VALUES (%s, %s, %s)", localizacao)
 
 
-    seeg_medicoes_dataset = pd.read_csv("./gasesEE-medicoes_C1.csv", chunksize=10000, keep_default_na=False)
+    seeg_medicoes_dataset = pd.read_csv("./dataset/gasesEE-medicoes_C1.csv", chunksize=10000, keep_default_na=False)
 
     i = 1
 
@@ -174,7 +174,7 @@ def main():
             print(f'ano {ano}. chunk {i} inserida com sucesso')
         i += 1
 
-    seeg_medicoes_dataset = pd.read_csv("./gasesEE-medicoes_C2.csv", chunksize=10000, keep_default_na=False)
+    seeg_medicoes_dataset = pd.read_csv("./dataset/gasesEE-medicoes_C2.csv", chunksize=10000, keep_default_na=False)
 
     for chunk in seeg_medicoes_dataset:
         for ano in range(1970, 2024):
@@ -203,7 +203,7 @@ def main():
             print(f'ano {ano}. chunk {i} inserida com sucesso')
         i += 1
     
-    seeg_medicoes_dataset = pd.read_csv("./gasesEE-medicoes_C3.csv", chunksize=10000, keep_default_na=False)
+    seeg_medicoes_dataset = pd.read_csv("./dataset/gasesEE-medicoes_C3.csv", chunksize=10000, keep_default_na=False)
 
     for chunk in seeg_medicoes_dataset:
         for ano in range(1970, 2024):
@@ -232,7 +232,7 @@ def main():
             print(f'ano {ano}. chunk {i} inserida com sucesso')
         i += 1
 
-    seeg_medicoes_dataset = pd.read_csv("./gasesEE-medicoes_C4.csv", chunksize=10000, keep_default_na=False)
+    seeg_medicoes_dataset = pd.read_csv("./dataset/gasesEE-medicoes_C4.csv", chunksize=10000, keep_default_na=False)
 
     for chunk in seeg_medicoes_dataset:
         for ano in range(1970, 2024):
@@ -258,7 +258,7 @@ def main():
             cursor.executemany("INSERT INTO emissao (cod_em, ano_em, qtd_em, em_cod_loc, em_cod_origem, em_cod_produto, em_cod_gas)"
                     "VALUES (%s, %s, %s, %s, %s, %s, %s)", emissao)
            
-            print(f'ano {ano}. chunk {i} inserida com sucesso')
+            print(f'ano {ano}, chunk {i} inserida com sucesso')
         i += 1
    
     connection.commit()
