@@ -5,7 +5,7 @@ SELECT
 	NOME_UF AS ESTADO,	
 	TIPO_AREA,
 	SUM(QTD_EM) AS EMITIDO_EXP,
-	ROUND (
+	(
         SUM(QTD_EM) * 100.0 /
         (
             SELECT SUM(e2.QTD_EM)
