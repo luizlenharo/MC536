@@ -1,3 +1,5 @@
+--  Evolução da (emissão agropecuária/ área rural) e (emissão indústria/ área urbana) em determinados anos
+
 WITH EMISSAO_SETOR AS (
 	-- Emissão de origem industrial e agropecuária
 	SELECT
