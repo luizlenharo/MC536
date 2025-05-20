@@ -1,4 +1,4 @@
--- Quantidade de árvore plantadas por hectar nescessária para anular a emissão de gases do Efeito Estufa
+-- Quantidade nescessária de árvore plantadas por hectar para anular a emissão de gases do Efeito Estufa
 
 WITH EM_EF_ESTUFA AS (
 	-- Quantidade emitida de gases causadores do efeito estufa (GEE) em determinado ano
