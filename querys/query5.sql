@@ -1,30 +1,31 @@
--- Quantidade nescessária de árvore plantadas por hectar para anular a emissão de gases do Efeito Estufa
-
-WITH EM_EF_ESTUFA AS (
-	-- Quantidade emitida de gases causadores do efeito estufa (GEE) em determinado ano
+-- Top10 anos com maior indice qtd_em / qtd_rem
+SELECT 
+WITH EM_GEE AS (
+	-- Quantidade emitida e removida de gases causadores do efeito estufa (GEE) em determinado ano
 	SELECT
 		ANO_EM AS ANO,
 		NOME_GAS, 
-		SUM (QTD_EM) AS QTD_EM
+		SUM (CASE WHEN TIPO_ORIGEM = 'Emissão' THEN QTD_EM ELSE 0 END) AS QTD_EM,
+		SUM (CASE WHEN TIPO_ORIGEM = 'Remoção' THEN QTD_EM ELSE 0 END) AS QTD_REM
 	FROM EMISSAO e
 		JOIN GAS g
 			ON e.EM_COD_GAS = g.COD_GAS
-	WHERE NOME_GAS = 'CO2e' AND ANO_EM = '2023-01-01'
+		JOIN ORIGEM o
+			ON e.EM_COD_ORIGEM = o.COD_ORIGEM
+	WHERE NOME_GAS = 'CO2e' 
 	GROUP BY (ANO, NOME_GAS)
-), AREA AS (
-	-- Área total do país em hectares
-	SELECT 
-		SUM (AREA_TOTAL) :: real AS AREA_TOTAL
-	FROM MUNICIPIO
-), EM_AREA AS (
-	-- Emissão de GEE por hectar
-	SELECT
-		e.ANO,
-		ROUND((e.QTD_EM / a.AREA_TOTAL) :: numeric, 2) AS TON_GEE_POR_HEC
-	FROM AREA a, EM_EF_ESTUFA e 
 )
--- Quantidade de árvores para anular a emissão de GEE, usando uma média de 7.14 árvores por tonelada de GEE
+-- 10 anos com maior indice qtd_em / qtd_rem
 SELECT 
-	ea.*,
-	ROUND((ea.TON_GEE_POR_HEC * 7.14) :: numeric, 2) AS ARVORES_EQUIVAL
-FROM EM_AREA ea
+	e.*,
+	(CASE 
+		WHEN e.QTD_REM <> 0 
+			THEN 
+				ROUND ((e.QTD_EM / e.QTD_REM * -1) :: numeric, 2) 
+		ELSE
+			0
+	END)
+	AS COMPARACAO 
+FROM EM_GEE e
+ORDER BY (COMPARACAO) DESC
+LIMIT 10
