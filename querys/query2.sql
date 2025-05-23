@@ -27,26 +27,25 @@ AREA AS (
 		JOIN ESTADO uf
 			ON mi.MI_COD_UF = uf.COD_UF
 	WHERE a.TIPO_AREA = 'RURAL'
+), EM_PARCIAL AS (
+	SELECT 
+		e.ANO,
+		SUM(CASE 
+				WHEN e.SETOR = 'Agropecuária' THEN e.EMISSAO / a.AREA_RURAL 
+				ELSE 0 
+			END) AS EMISSAO_POR_AREA_RURAL,
+		SUM(CASE 
+				WHEN e.SETOR = 'Processos Industriais' THEN e.EMISSAO / a.AREA_URBANA 
+				ELSE 0 
+			END) AS EMISSAO_POR_AREA_URBANA
+	FROM 
+		EMISSAO_SETOR e
+	CROSS JOIN 
+		AREA a
+	GROUP BY e.ANO
+	ORDER BY e.ANO
 )
-
 SELECT 
-	e.ANO,
-	SUM(CASE 
-			WHEN e.SETOR = 'Agropecuária' THEN e.EMISSAO / a.AREA_RURAL 
-			ELSE 0 
-		END) AS emissao_por_area_rural,
-	SUM(CASE 
-			WHEN e.SETOR = 'Processos Industriais' THEN e.EMISSAO / a.AREA_URBANA 
-			ELSE 0 
-		END) AS emissao_por_area_urbana
-FROM 
-	EMISSAO_SETOR e
-CROSS JOIN 
-	AREA a
-GROUP BY e.ANO
-ORDER BY e.ANO
-
--- Resultados:
---"ano"	        "emissao_por_area_rural"	"emissao_por_area_urbana"
---"1970-01-01"	0.5757051627545174	        1.905508662471919
---"2020-01-01"	0.8566739058197737	        10.491481993668481
+	ep.*,
+	(ep.EMISSAO_POR_AREA_URBANA / ep.EMISSAO_POR_AREA_RURAL) AS COMPARACAO_URB_RUR
+FROM EM_PARCIAL ep
