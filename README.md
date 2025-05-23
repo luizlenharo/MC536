@@ -14,14 +14,16 @@ Autores:
 à respeito dos gases emitidos no Brasil desde o ano de 1970. A partir dele, é possível concretizar análises relacionadas às emissões gasosas, com a finalidade de propor soluções para o desenvolvimento sustentável e aquecimento global.
 
 ## Modelagem do Banco de Dados
-# Modelo Conceitual - Diagrama MER (Modelo Entidade Relacionamento
+### Imagem 1: Modelo Conceitual (Diagrama MER)
 ![](https://github.com/luizlenharo/MC536/blob/main/models/modeloConceitual.jpg)
 
+### Imagem 2: Modelo Relacional
+![](https://github.com/luizlenharo/MC536/blob/main/models/modeloRelacional.png)
+
 ## Tecnologias utilizadas
-
-
-## Estrutura do projeto
-
+**- Banco de dados:** PostgreSQL
+**- Linguagem de Programação:** Python
+**- Bibliotecas:** pandas, psychopg2
 
 ## Como usar
 
