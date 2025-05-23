@@ -57,18 +57,6 @@ Autores:
 #### SCRIPT
 1. Utilizamos as planilhas resultantes para popular o banco
 
-
-## Exemplo de consulta
-
-```sql
--- Emissões totais por estado em 2020
-SELECT estado, SUM(emissao) 
-FROM emissao 
-WHERE ano = 2023
-GROUP BY estado 
-ORDER BY SUM(emissao) DESC;
-```
-
 ## Consultas Geradas
 
 1. Porcentagem da emissão de área rural sobre emissão total em um estado em determinado ano.
