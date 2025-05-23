@@ -21,9 +21,9 @@ Autores:
 ![](https://github.com/luizlenharo/MC536/blob/main/models/modeloRelacional.png)
 
 ## Tecnologias utilizadas
-**+ Banco de dados:** PostgreSQL  
-**+ Linguagem de Programação:** Python  
-**+ Bibliotecas:** pandas, psychopg2  
+* **Banco de dados:** PostgreSQL  
+* **Linguagem de Programação:** Python  
+* **Bibliotecas:** pandas, psychopg2  
 
 ## Como usar
 
