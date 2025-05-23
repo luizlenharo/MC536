@@ -6,7 +6,7 @@
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Datasets](#datasets)
 * [Consultas Geradas](#consultas-geradas)
-* [Gráficos dos resultados obtidos](#gráficos-dos-resultados-obtidos)
+* [Resultados](#resultados)
 
 ## Sobre o projeto
 Autores:
@@ -66,7 +66,7 @@ Autores:
 1. Utilizamos as planilhas resultantes para popular o banco
 
 ## Consultas Geradas
-
+Para realizar a análise dos dados foram feitas cinco consultas não triviais em SQL, listadas abaixo:
 1. Porcentagem da emissão da agropecuária sobre emissão total em um estado em determinado ano.
 
 2. Evolução da (emissão agropecuária/área rural) e (emissão indústria/área urbana) ao longo dos anos.
@@ -78,8 +78,9 @@ Autores:
 
 5. Top 10 anos com maior balanço *qtd_em* + *qtd_rem* no século 21.
 
-## Gráficos dos resultados obtidos
-Abaixo estão os gráficos gerados a partir dos resultados obtidos da [Query 2](./querys/query2.sql), [Query 4](./querys/query4.sql) e [Query 5](./querys/query5.sql). 
+O código delas se encontra [aqui](./querys/).
+## Resultados
+Executando as consultas listadas acima, obtivemos os resultados presentes no diretório [/results](./results/), onde cada subdiretório contem o arquivo `.csv` resultante da consulta e os gráficos gerados (apenas nas consultas 2, 4 e 5). Abaixo estão os gráficos. 
 
 * **Gráfico Query 2**: 
 <p align="center">
