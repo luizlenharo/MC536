@@ -1,4 +1,4 @@
---  Evolução da (emissão agropecuária/ área rural) e (emissão indústria/ área urbana) em determinados anos
+--  Evolução da (emissão agropecuária/área rural) e (emissão indústria/área urbana) ao longo dos anos
 
 WITH EMISSAO_SETOR AS (
 	-- Emissão de origem industrial e agropecuária
@@ -11,10 +11,10 @@ WITH EMISSAO_SETOR AS (
 			ON e.EM_COD_ORIGEM = o.COD_ORIGEM
 		JOIN LOCALIZACAO l
 			ON e.EM_COD_LOC = l.COD_LOC
-	WHERE (SETOR_ORIGEM = 'Processos Industriais' OR SETOR_ORIGEM = 'Agropecuária') AND (ANO_EM = '2020-01-01' OR ANO_EM = '1970-01-01')
+	WHERE (SETOR_ORIGEM = 'Processos Industriais' OR SETOR_ORIGEM = 'Agropecuária')
 	GROUP BY (ANO, SETOR)
-),
-AREA AS (
+	ORDER BY (SETOR)
+), AREA AS (
 	-- Área rural e urbana do país
 	SELECT 
 		SUM (TAM_AREA) AS AREA_RURAL,
@@ -47,5 +47,5 @@ AREA AS (
 )
 SELECT 
 	ep.*,
-	(ep.EMISSAO_POR_AREA_URBANA / ep.EMISSAO_POR_AREA_RURAL) AS COMPARACAO_URB_RUR
+	(ep.EMISSAO_POR_AREA_URBANA / ep.EMISSAO_POR_AREA_RURAL) AS PROPORCAO_URB_RUR
 FROM EM_PARCIAL ep
