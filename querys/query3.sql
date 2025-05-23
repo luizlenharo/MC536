@@ -1,3 +1,5 @@
+-- Aumento da emissão de gases em São Paulo e em outros estados no período de 1970 - 2020 e comparação entre aumento de SP e média dos outros estados
+
 WITH EMISSAO AS (
 	-- Emissão de São Paulo e emissão média dos outros estados em determinados anos
 	SELECT
@@ -37,11 +39,6 @@ WITH EMISSAO AS (
 )
 -- Comparação entre aumento de SP e média dos outros estados
 SELECT 
-	AUMENTO_SP,
-	AUMENTO_MEDIO,
+	AUMENTO.*,
 	(AUMENTO_SP/AUMENTO_MEDIO) AS AUMENTO_RELACIONAL
 FROM AUMENTO
-
--- Resultados:
---"aumento_sp"	"aumento_medio"	    "aumento_relacional"
--- 6.936788	        9.441268	         0.73473054
