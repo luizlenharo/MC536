@@ -1,8 +1,11 @@
 # MC536 - Projeto 1 – Banco de Dados: Análise das emissões de gases no Brasil 
 
-## Visão Geral
+## SUmário
 * [Sobre o projeto](#sobre-o-projeto)
+* [Modelagem do Banco de Dados](#modelagem-do-banco-de-dados)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
+* [Datasets](#datasets)
+* [Consultas Geradas](#consultas-geradas)
 
 ## Sobre o projeto
 Autores:
