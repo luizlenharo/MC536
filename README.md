@@ -86,6 +86,7 @@ Abaixo estão os gráficos gerados a partir dos resultados obtidos da [Query 2](
   <img src="./results/query2/evolucaoGeral.png" alt="Query 2 result" width="700"/>
 </p>
 <br>
+
 * **Gráfico Query 4**:
 <p align="center">
   <img src="./results/query4/top5Produtos.png" alt="Query 4 result" width="700"/>
