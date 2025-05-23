@@ -1,5 +1,5 @@
 -- Top10 anos com maior indice qtd_em / qtd_rem
-SELECT 
+
 WITH EM_GEE AS (
 	-- Quantidade emitida e removida de gases causadores do efeito estufa (GEE) em determinado ano
 	SELECT
