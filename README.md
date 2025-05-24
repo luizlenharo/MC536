@@ -1,4 +1,4 @@
-# MC536 - Projeto 1 – Banco de Dados: Análise das emissões de gases no Brasil 
+# MC536 - Projeto 1 – Banco de Dados: Análise das emissões de gases do efeito estufa no Brasil a fim de promover uma agricultura sustentável
 
 ## Sumário
 * [Sobre o projeto](#sobre-o-projeto)
@@ -14,8 +14,8 @@ Autores:
 * [Henrique Cazarim Meirelles Alves](https://github.com/cazarimh) (244763)
 * [Gustavo Marcelino Rodrigues](https://github.com/gustavomrodrigues) (238183)
 
-<br>Esse projeto foi desenvolvido durante a disciplina MC536 - Banco de Dados: Teoria e Prática. O objetivo deste projeto consiste em realizar consultas 
-à respeito dos gases emitidos no Brasil desde o ano de 1970. A partir dele, é possível concretizar análises relacionadas às emissões gasosas, com a finalidade de propor soluções para o desenvolvimento sustentável e aquecimento global.
+<br>Esse projeto foi desenvolvido durante a disciplina MC536 - Banco de Dados: Teoria e Prática. O objetivo deste projeto consiste em idealizar um banco de dados relacional utilizando datasets distintos e realizar consultas não triviais neste banco. A realização do projeto se baseou nas ODS 2 (Fome zero e agricultura sustentável) e ODS 13 (Ação contra a mudança global do clima), escolhemos datasets que mostram emissões de GEE no Brasil e preservação de áreas das cidades do Brasil.
+<br>A partir do banco de dados resultante do projeto é possível acessar informações sobre as emissões, como a quantidade emitida (de 1970 a 2023), a localização (estado e bioma) em que ocorreu e caracterização (setor, categoria, produto, etc.), além de dados sobre a divisão do tipo de área de cada município brasileiro (com área total, preservada, protegida e rural). As consultas geradas são a respeito dos GEE no Brasil provenientes principalmente de atividades agrícolas, como descrito nas seções seguintes.
 
 ## Modelagem do Banco de Dados
 ### Imagem 1: Modelo Conceitual (Diagrama MER)
@@ -41,13 +41,14 @@ Autores:
 * O SEEG é fundamental para o monitoramento das mudanças climáticas e construção de medidas políticas voltadas para a redução da emissão dos gases de efeito estufa (GEE).
 
 ### EMBRAPA (Empresa Brasileira de Pesquisa Agropecuária)
-* Os dados estão diretamente relacionados com as áreas preservadas do Brasil, sendo elas: 
-    * Propriedades Rurais
-    * Unidades de Conservação
-    * Terras Indígenas
-    * Áreas Devolutas, Relevos e Águas Interiores.
+* Os dados estão diretamente relacionados com as áreas preservadas do Brasil, sendo elas:
+    * Área total do município
+    * Número de propriedades rurais
+    * Áreas protegidas (conservação, índigena e militar)
+    * Áreas preservadas (destinadas a preservação vegetal em propriedade rural)
 
-* A [`EMBRAPA`](https://geoinfo.dados.embrapa.br/metadados/srv/por/catalog.search#/metadata/61e66efd-7757-4d78-84b9-c3047a8bbc70) realiza desenvolve pesquisas e tecnologias direcionadas à gestão sustentável de recursos naturais e o desenvolvimento sustentável.
+* A [`EMBRAPA`](https://geoinfo.dados.embrapa.br/metadados/srv/por/catalog.search#/metadata/61e66efd-7757-4d78-84b9-c3047a8bbc70) realiza e desenvolve pesquisas e tecnologias direcionadas à gestão sustentável de recursos naturais e o desenvolvimento sustentável.
+* Alguns dos dados referentes às áreas neste dataset estão incongruentes. Notamos que alguns estão multiplicados por potência de 10 porém sem um padrão específico e não encontramos documentação que especificasse ou explicasse o motivo. Portanto, consultas geradas com dados referentes às áreas podem não refletir a realidade.
 
 ### Pré-Processamento 
 #### SEEG
