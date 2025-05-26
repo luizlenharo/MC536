@@ -219,10 +219,15 @@ def main():
     )
     cursor = connection.cursor()
 
+    print("\n========================== Query1 ==========================\n")
     print(query1(cursor))
+    print("\n========================== Query2 ==========================\n")
     print(query2(cursor))
+    print("\n========================== Query3 =========================\n")
     print(query3(cursor))
+    print("\n========================== Query4 ==========================\n")
     print(query4(cursor))
+    print("\n========================== Query5 ==========================\n")
     print(query5(cursor))
 
     connection.commit()
