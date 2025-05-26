@@ -28,6 +28,8 @@ Autores:
   <img src="./models/modeloRelacional.png" alt="Modelo Relacional" width="700"/>
 </p>
 
+<br>O [Modelo Físico](./models/modeloFisico) foi gerado a partir do Modelo Relacional com a ferramenta do pgAdmin4 e foi implementado em Python para a [definição das tabelas e relacionamentos](./models/dbDefinition.py) do banco de dados.
+
 ## Tecnologias utilizadas
 * **Banco de dados:** `PostgreSQL`  
 * **Linguagem de Programação:** `Python`  
@@ -79,7 +81,7 @@ Para realizar a análise dos dados foram feitas cinco consultas não triviais em
 
 5. Top 10 anos com maior balanço *qtd_em* + *qtd_rem* no século 21.
 
-O código delas se encontra [aqui](./querys/).
+O código delas se encontra [aqui](./querys/). As consultas também foram implementadas em Python e podem ser encontradas [aqui](./querys/querys.py).
 ## Resultados
 Executando as consultas listadas acima, obtivemos os resultados presentes no diretório [/results](./results/), onde cada subdiretório contem o arquivo `.csv` resultante da consulta e os gráficos gerados (apenas nas consultas 2, 4 e 5). Abaixo estão os gráficos. 
 
