@@ -20,7 +20,7 @@ Autores:
 ## Modelagem do Banco de Dados
 ### Imagem 1: Modelo Conceitual (Diagrama MER)
 <p align="center">
-  <img src="./models/modeloConceitual.jpg" alt="Modelo Conceitual" width="700"/>
+  <img src="./models/modeloConceitual.png" alt="Modelo Conceitual" width="700"/>
 </p>
 
 ### Imagem 2: Modelo Relacional
