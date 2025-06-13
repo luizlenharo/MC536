@@ -3,7 +3,7 @@
 WITH EM_GEE AS (
 	-- Quantidade emitida e removida de gases causadores do efeito estufa (GEE) após 2000
 	SELECT
-		ANO_EM AS ANO,
+		CAST(EXTRACT(YEAR FROM e.ANO_EM) AS INTEGER) AS ANO,
 		NOME_GAS,
 		SUM (CASE WHEN TIPO_ORIGEM = 'Emissão' THEN QTD_EM ELSE 0 END) AS QTD_EM,
 		SUM (CASE WHEN TIPO_ORIGEM = 'Remoção' THEN QTD_EM ELSE 0 END) AS QTD_REM
@@ -12,7 +12,7 @@ WITH EM_GEE AS (
 			ON e.EM_COD_GAS = g.COD_GAS
 		JOIN ORIGEM o
 			ON e.EM_COD_ORIGEM = o.COD_ORIGEM
-	WHERE CARACTERISTICA_GAS LIKE '%GWP%' AND ANO_EM >= '2000-01-01'
+	WHERE CARACTERISTICA_GAS LIKE '%GWP%' AND EXTRACT(YEAR FROM e.ANO_EM) >= 2001
 	GROUP BY (ANO, NOME_GAS)
 )
 -- Filtra 10 anos com maior balanço qtd_em + qtd_rem no século atual
